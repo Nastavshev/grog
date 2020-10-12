@@ -1,12 +1,12 @@
 import React from 'react';
 
 function Name(props) {
-  const { name } = props;
+  const { name, index, setState } = props;
 
   return (
     <>
       <li>{name}</li>
-      <button type="button">
+      <button onClick={() => setState((prev) => prev.filter((el, i) => i !== index))} type="button">
         Удалить
       </button>
     </>

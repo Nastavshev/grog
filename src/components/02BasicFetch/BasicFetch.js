@@ -6,7 +6,26 @@ import { FETCH_URL_JSON_SERVER } from '../../constants';
 // "Автор: Вася, title: привет"
 
 function BasicFetch() {
-  return <div>hello</div>;
+  const [post, setPost] = useState([]);
+  useEffect(() => {
+    fetch(FETCH_URL_JSON_SERVER)
+      .then((prev) => prev.json())
+      .then((prev) => setPost(prev));
+  }, [])
+  console.log(post);
+  return (
+    <>
+      {post.map(({ id, name, title}) => {
+        return (
+          <React.Fragment key={id}>
+            <ul>
+              <li>Автор: {name}, title: {title}</li>
+            </ul>
+          </React.Fragment>
+        )
+      })}
+    </>
+  )
 }
 
 export default BasicFetch;
