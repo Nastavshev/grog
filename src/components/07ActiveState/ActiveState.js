@@ -5,12 +5,13 @@ import { Name } from './components/Name';
 // Чтобы не ошибиться, в компонент Name уже были подключены классы
 export const ActiveState = () => {
   const [list, setList] = useState(['Vasya', 'Petya', 'Grisha']);
+  const [active, setActive] = useState(null);
 
   return (
     <>
       <ul>
-        {list.map((el) => (
-          <Name name={el} />
+        {list.map((el, index) => (
+          <Name name={el} index={index} active={active} setActive={setActive} />
         ))}
       </ul>
     </>
